@@ -33,18 +33,11 @@
           {% endif %}
         </ul>
         <ul class="footer-menu">
-          <li>
-            <a href="">Contact</a>
-          </li>
-          <li>
-            <a href="">SHIPPING</a>
-          </li>
-          <li>
-            <a href="">TERMS OF SERVICE</a>
-          </li>
-          <li>
-            <a href="">PRIVACY POLICY</a>
-          </li>
+          {% for block in section.blocks %}
+            <li>
+              <a href="{{block.settings.link_url}}">{{block.settings.link_text}}</a>
+            </li>
+          {% endfor %}
         </ul>
         <p class="copyright-text">{{section.settings.copyright_text}} &#9400;</p>
       </div>
@@ -81,6 +74,24 @@
       "id": "copyright_text",
       "label": "Copyright Text",
       "default": "Copyright Fashion"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Footer Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
     }
   ]
 }
